@@ -48,6 +48,7 @@ public class Kortti implements Comparable<Kortti>{
         }
         return arvoInt;
     }
+
     public int compareTo(Kortti k) {
         if (muutaIntArvoksi(this.arvo) > muutaIntArvoksi(k.arvo)) {
             return 1;
