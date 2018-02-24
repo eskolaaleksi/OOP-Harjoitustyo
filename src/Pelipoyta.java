@@ -34,13 +34,19 @@ public class Pelipoyta extends Korttipakka{
         Scanner sc = new Scanner(System.in);
         int pino = 0;
 
-        while (!(pino >= 1 && pino <= poyta.size())) {
-            System.out.print("Valitse pelattava pino (1-" + poyta.size() + "): ");
-            while (!sc.hasNextInt()) {
+        if (poyta.size()>1) {
+            while (!(pino >= 1 && pino <= poyta.size())) {
                 System.out.print("Valitse pelattava pino (1-" + poyta.size() + "): ");
-                sc.next();
+                while (!sc.hasNextInt()) {
+                    System.out.print("Valitse pelattava pino (1-" + poyta.size() + "): ");
+                    sc.next();
+                }
+                pino = sc.nextInt();
             }
-            pino = sc.nextInt();
+        }
+
+        else{
+            pino = 1;
         }
 
         char merkki = ' ';
