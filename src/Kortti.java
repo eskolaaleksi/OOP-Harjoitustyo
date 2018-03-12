@@ -1,4 +1,6 @@
-public class Kortti implements Comparable<Kortti>{
+import java.io.Serializable;
+
+public class Kortti implements Comparable<Kortti>, Serializable{
     protected String maa;
     protected String arvo;
 
@@ -7,7 +9,6 @@ public class Kortti implements Comparable<Kortti>{
         this.arvo = arvo;
     }
 
-    //GET
     public String annaMaa(){
         return this.maa;
     }
@@ -16,8 +17,9 @@ public class Kortti implements Comparable<Kortti>{
         return this.arvo;
     }
 
-    private int muutaIntArvoksi(String a) {
-        int arvoInt = 0;
+    private int muutaIntArvoksi(String a) { //peli käsittelee int tyyppisiä muuttujia mutta näyttää pelaajalle
+                                            //string tyyppisen nimen jokaiselle kortille
+        int arvoInt = 0;                    //esim. 6 ja Q eivät ole vertailukelpoisia keskenään ilman tätä toimenpidettä
         switch (a) {
             case "A": arvoInt = 1;
                 break;
@@ -49,7 +51,7 @@ public class Kortti implements Comparable<Kortti>{
         return arvoInt;
     }
 
-    public int compareTo(Kortti k) {
+    public int compareTo(Kortti k) { //vertaillaan pelattujen korttien suuruuksia keskenään
         if (muutaIntArvoksi(this.arvo) > muutaIntArvoksi(k.arvo)) {
             return 1;
         }
